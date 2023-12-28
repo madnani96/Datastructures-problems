@@ -1,0 +1,54 @@
+'''
+Given an array and a positive integer k, find the first negative integer for each and every window(contiguous subarray) of size k.
+
+Example:
+
+Input:
+2
+5
+-8 2 3 -6 10
+2
+8
+12 -1 -7 8 -15 30 16 28
+3
+
+Output:
+-8 0 -6 -6
+-1 -1 -7 -15 -15 0 . 
+'''
+
+
+k=2
+arr=[-8, 2, 3, -6, 10]
+arr= [12, -1, -7, 8, -15, 30, 16, 28]
+sum=0
+negativelist=[]
+for x in range(k):
+    if arr[x]<0:
+        negativelist.append(arr[x])    
+arr2=[]
+if len(negativelist)==0:
+    arr2.append(0)
+else:
+    arr2=[negativelist[0]]
+
+#print(arr2)
+
+for x in range(k,len(arr)):
+    if arr[x]<0:
+        negativelist.append(arr[x])
+    if arr[x-k]<0:
+        
+        negativelist.pop(0)
+
+    if len(negativelist)==0:
+        arr2.append(0)
+    else:
+        arr2.append(negativelist[0])
+    
+    #sum = sum-arr[x-k]+arr[x]
+    #arr2.append(sum)
+print(arr2)
+
+
+

@@ -1,0 +1,34 @@
+'''
+def lis(nums,index,lastindex):
+            if index==len(nums)-1 or lastindex== len(nums)-1:
+                return 0
+
+            if nums[lastindex]<nums[index]:
+                lastindex = index
+                return 1+ lis(nums,index+1,lastindex)
+
+            else:
+                return max(lis(nums,index+1,lastindex) , lis(nums,index+1,lastindex+1))
+
+
+nums = [4,10,4,3,8,9]
+print(lis(nums,0,nums[1])+1)
+
+'''
+
+LIS=[1,5,7,8]
+def binarysearch(LIS,target,low,high):
+            if low == high:
+                LIS[low]=target
+                return 
+
+            mid = (low+high)//2
+            
+            if LIS[mid]>target:
+                return binarysearch(LIS,target,low,mid)
+
+            elif LIS[mid]<target:
+                return binarysearch(LIS,target,mid+1,high)
+            
+binarysearch(LIS,2,0,3)
+print(LIS)
